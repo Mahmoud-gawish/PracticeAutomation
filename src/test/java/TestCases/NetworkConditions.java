@@ -1,6 +1,6 @@
 package TestCases;
 
-import com.google.common.base.Optional;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 
+import java.util.Optional;
 
 
 public class NetworkConditions {
