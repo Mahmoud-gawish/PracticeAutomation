@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- <suite name="TestSuite01" parallel="methods" thread-count="2"> -->
+<suite name="TestSuite01" >
+    <listeners>
+        <listener class-name="listeners.RetryListener" />
+    </listeners>
+    <test name="TestSuite01">
+        <classes>
+
+            <class name="liveProject.phpTravels.GUI.tests">
+                <methods>
+                    <include name="testWorkingInBothWindow" />
+                </methods>
+            </class>
+
+        </classes>
+
+    </test>
+</suite>
