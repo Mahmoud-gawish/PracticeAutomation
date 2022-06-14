@@ -17,7 +17,7 @@
         <webdrivermanager.version>5.1.0</webdrivermanager.version>
         <testng.version>7.5</testng.version>
         <poi-ooxml.version>5.2.1</poi-ooxml.version>
-        <rest-assured.version>4.5.0</rest-assured.version>
+        <rest-assured.version>5.1.1</rest-assured.version>
         <allure-testng.version>2.17.2</allure-testng.version>
         <allure-maven.version>2.11.2</allure-maven.version>
         <allure-maven-report.version>2.10.0</allure-maven-report.version>
@@ -58,11 +58,18 @@
             <version>${testng.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.5.0</version>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.tngtech.java</groupId>
+            <artifactId>junit-dataprovider</artifactId>
+            <version>1.13.1</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -75,6 +82,13 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>2.33.2</version>
             <scope>test</scope>
         </dependency>
 
