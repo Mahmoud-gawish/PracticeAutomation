@@ -51,4 +51,6 @@ public class PracticeAPI {
                 assertThat().body("places.'place name'",hasSize(1));
     }
 
+
+
 }
