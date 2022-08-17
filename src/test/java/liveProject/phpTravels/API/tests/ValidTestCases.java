@@ -8,6 +8,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import org.json.simple.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -51,6 +52,30 @@ public class ValidTestCases {
                         + "    \"userId\": 1\r\n"
                         + "}").when().
                 post("posts").then().assertThat().body("body", equalTo("bar"));
+
+    }
+
+
+    // just an example not a real runtime server
+    @Test
+    public void testPostEmployee()  {
+        JSONObject empParams = new JSONObject();
+        empParams.put("name", "TechGeekNextUser44");
+        empParams.put("role", "Supervisor");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(empParams.toString())
+                .log().all()
+
+                .when()
+                .post("http://localhost:8080/employee")
+
+                .then()
+                .assertThat().statusCode(200)
+                .body("name", equalTo("TechGeekNextUser44"))
+                .body("role", equalTo("Supervisor"))
+                .log().all();
 
     }
 

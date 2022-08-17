@@ -1,15 +1,13 @@
 package liveProject.phpTravels.API.tests;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import dataEntities.Location;
+import apiDataEntities.Location;
 import io.restassured.http.ContentType;
-import org.apache.commons.lang3.builder.ToStringExclude;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 public class Chapter5 {
 

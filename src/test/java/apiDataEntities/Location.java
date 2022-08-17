@@ -1,4 +1,4 @@
-package dataEntities;
+package apiDataEntities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

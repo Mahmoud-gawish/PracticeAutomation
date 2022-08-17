@@ -73,6 +73,7 @@ public class Chapter3InPractice {
                 body("places[0].'place name'", equalTo("Beverly Hills"));
     }
 
+
     @Test
     public void extractPlaceName(){
 
