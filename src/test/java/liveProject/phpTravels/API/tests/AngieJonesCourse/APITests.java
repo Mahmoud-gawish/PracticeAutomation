@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class APITests {
 
@@ -48,10 +48,15 @@ public class APITests {
                 queryParam("id",2).
                 when().
                 get(endPoint).
-                then().log().body().
+                then().log().headers().
                 assertThat().statusCode(200).
-                body("records.size()",greaterThan(2));
-
+                headers("Content-Type",equalTo("application/json; charset=UTF-8")).
+                body("records.size()",greaterThan(2)).
+                body("records.id",everyItem(notNullValue())).
+                body("records.name",everyItem(notNullValue())).
+                body("records.description",everyItem(notNullValue())).
+                body("records.price",everyItem(notNullValue())).
+                body("records.id[0]",equalTo("1003"));
 
 
     }
@@ -116,5 +121,27 @@ public class APITests {
         response.log().body();
     }
 
+    @Test
+    public void getDeserializedProduct(){
+
+        String endPoint = "http://localhost:8888/api_testing/product/read_one.php";
+        Product expectedProduct = new Product(
+                2,
+                "Cross-Back Training Tank",
+                "The most awesome phone of 2013!",
+                299.00,
+                2,
+                "Active Wear - Women"
+        );
+
+        Product actualProduct =
+                given().
+                        queryParam("id", "2").
+                        when().
+                        get(endPoint).
+                        as(Product.class);
+
+        assertThat(actualProduct, samePropertyValuesAs(expectedProduct));
+    }
 
 }
